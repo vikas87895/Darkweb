@@ -151,7 +151,8 @@ async function openViewer(id){
   }else if(item.type === "video"){
     embedHTML = `<video src="${item.fileURL}" controls controlsList="nodownload" style="width:100%;border-radius:4px;"></video>`;
   }else if(item.type === "pdf"){
-    embedHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(item.fileURL)}&embedded=true" style="width:100%;height:60vh;border:0;"></iframe>`;
+    embedHTML = `<iframe src="${item.fileURL}" style="width:100%;height:60vh;border:0;background:#fff;"></iframe>
+      <p class="small mt center">Preview nahi dikh raha? <a href="${item.fileURL}" target="_blank" rel="noopener">Yahan naye tab mein kholo</a></p>`;
   }else if(item.type === "ppt"){
     embedHTML = `<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(item.fileURL)}" style="width:100%;height:60vh;border:0;"></iframe>`;
   }
