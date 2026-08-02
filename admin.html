@@ -40,24 +40,50 @@
             <input type="text" id="cTitle" required>
           </div>
           <div class="field">
-            <label>Type</label>
-            <select id="cType" required>
-              <option value="image">Image</option>
-              <option value="video">Video</option>
-              <option value="pdf">PDF</option>
-              <option value="ppt">PPT</option>
-            </select>
-          </div>
-          <div class="field">
             <label>Date (apni marzi se)</label>
             <input type="date" id="cDate">
           </div>
           <div class="field">
-            <label>File</label>
-            <input type="file" id="cFile" required style="padding:10px;border:1px solid var(--border);border-radius:4px;width:100%;background:#050a06;color:var(--green);">
+            <label>Files (ek se zyada select kar sakte ho — sabko yahi Title/Date milega)</label>
+            <input type="file" id="cFile" multiple required style="padding:10px;border:1px solid var(--border);border-radius:4px;width:100%;background:#050a06;color:var(--green);">
           </div>
           <button type="submit" class="btn block" id="uploadBtn">Upload</button>
         </form>
+      </div>
+    </div>
+
+    <div class="panel mt">
+      <div class="panel-head"><span class="led"></span> add_course_material.sh</div>
+      <div class="panel-body">
+        <h2>Course Material Add Karo (Alag Login Page)</h2>
+        <p class="sub">Ye material ek <b>alag page (course.html)</b> pe ek shared Username/Password se unlock hota hai — koi Firebase signup nahi chahiye. Course buy karne walon ko WhatsApp pe yahi link + credential bhej dena.</p>
+        <div id="msg3" class="msg"></div>
+        <form id="courseMaterialForm">
+          <div class="field">
+            <label>Course Ka Naam</label>
+            <input type="text" id="cmName" required placeholder="e.g. JEE Crash Course Batch 1">
+          </div>
+          <div class="field">
+            <label>Login Username</label>
+            <input type="text" id="cmUsername" required style="text-transform:uppercase;">
+            <p class="hint">Naam type karte hi apne aap ban jayega (AS-COURSE_NAME), ya khud edit kar do.</p>
+          </div>
+          <div class="field">
+            <label>Login Password</label>
+            <input type="text" id="cmPassword" required>
+            <p class="hint">Default random password already bhara hai, chaho to badal do.</p>
+          </div>
+          <div class="field">
+            <label>Files (ek se zyada select kar sakte ho)</label>
+            <input type="file" id="cmFiles" multiple required style="padding:10px;border:1px solid var(--border);border-radius:4px;width:100%;background:#050a06;color:var(--green);">
+          </div>
+          <button type="submit" class="btn block" id="cmBtn">Course Material Add Karo</button>
+        </form>
+        <div class="cred-card" id="cmCredCard" style="display:none;">
+          <div class="cred-row"><span class="k">Page Link</span><span class="v" id="cmLink" style="font-size:12px;word-break:break-all;"></span></div>
+          <div class="cred-row"><span class="k">Username</span><span class="v" id="cmOutUser"></span></div>
+          <div class="cred-row"><span class="k">Password</span><span class="v" id="cmOutPass"></span></div>
+        </div>
       </div>
     </div>
 
