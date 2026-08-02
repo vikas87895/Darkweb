@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APNA STYLE // Admin Console</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="dot"></div>
+    <div class="brand-title">APNA STYLE<small>ADMIN CONSOLE</small></div>
+  </div>
+  <nav class="links">
+    <a href="dashboard.html">dashboard</a>
+    <a href="#" id="logoutBtn">logout</a>
+  </nav>
+</div>
+
+<div class="wrap" style="max-width:640px;">
+  <div id="deniedBox" style="display:none;" class="panel">
+    <div class="panel-body center">
+      <h2 style="color:var(--red);">ACCESS DENIED</h2>
+      <p class="sub">Ye account admin nahi hai.</p>
+      <a href="dashboard.html" class="btn">Dashboard pe wapas jao</a>
+    </div>
+  </div>
+
+  <div id="adminBox" style="display:none;">
+    <div class="panel">
+      <div class="panel-head"><span class="led"></span> upload_content.sh</div>
+      <div class="panel-body">
+        <h2>Naya Content Upload Karo</h2>
+        <div id="msg1" class="msg"></div>
+        <form id="contentForm">
+          <div class="field">
+            <label>Title</label>
+            <input type="text" id="cTitle" required>
+          </div>
+          <div class="field">
+            <label>Type</label>
+            <select id="cType" required>
+              <option value="image">Image</option>
+              <option value="video">Video</option>
+              <option value="pdf">PDF</option>
+              <option value="ppt">PPT</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Date (apni marzi se)</label>
+            <input type="date" id="cDate">
+          </div>
+          <div class="field">
+            <label>File</label>
+            <input type="file" id="cFile" required style="padding:10px;border:1px solid var(--border);border-radius:4px;width:100%;background:#050a06;color:var(--green);">
+          </div>
+          <button type="submit" class="btn block" id="uploadBtn">Upload</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel mt">
+      <div class="panel-head"><span class="led"></span> add_course.sh</div>
+      <div class="panel-body">
+        <h2>Naya Course (Masti Batch) Add Karo</h2>
+        <div id="msg2" class="msg"></div>
+        <form id="courseForm">
+          <div class="field">
+            <label>Course Title</label>
+            <input type="text" id="crTitle" required>
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <textarea id="crDesc" rows="3"></textarea>
+          </div>
+          <div class="field">
+            <label>Price (₹)</label>
+            <input type="text" id="crPrice">
+          </div>
+          <div class="field">
+            <label>Cover Image (optional)</label>
+            <input type="file" id="crImage" accept="image/*" style="padding:10px;border:1px solid var(--border);border-radius:4px;width:100%;background:#050a06;color:var(--green);">
+          </div>
+          <button type="submit" class="btn block" id="courseBtn">Add Course</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>APNA STYLE STUDY · admin only</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

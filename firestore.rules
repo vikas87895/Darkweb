@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/students/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    // students collection: har koi apna hi record likh/create kare, sab logged-in log read kar sakein
+    match /students/{uid} {
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow read: if isSignedIn();
+      allow update: if isOwner(uid) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // usernames collection: sirf username-taken check ke liye (koi private
+    // data store nahi, isliye pre-login bhi check karna safe hai)
+    match /usernames/{username} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // content (library files): sirf admin upload/edit/delete kar sakta hai, sab log read kar sakte hain
+    match /content/{id} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+
+      match /likes/{uid} {
+        allow read: if isSignedIn();
+        allow write: if isOwner(uid);
+      }
+      match /comments/{commentId} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // courses: sirf admin add/edit kare, sab read kar sakte hain
+    match /courses/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+  }
+}

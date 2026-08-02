@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APNA STYLE // Private Access Terminal</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="dot"></div>
+    <div class="brand-title">APNA STYLE<small>PRIVATE · SILENT · SUCCESSFUL</small></div>
+  </div>
+  <nav class="links">
+    <a href="index.html" class="active">signup</a>
+    <a href="login.html">login</a>
+    <a href="docs.html">documentation</a>
+  </nav>
+</div>
+
+<div class="wrap" style="max-width:640px;">
+  <div class="center" style="margin-bottom:26px;">
+    <span class="badge">ACCESS RESTRICTED</span>
+    <h1 style="margin-top:14px;">Apna Style Study — Secret Portal</h1>
+    <p class="sub"><span class="prefix">&gt;</span> Ye ek private student portal hai. Andar aane ke liye pehle apna registration terminal ke through complete karo.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><span class="led"></span> new_student_registration.sh</div>
+    <div class="panel-body">
+
+      <div id="msg" class="msg"></div>
+
+      <form id="signupForm">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="name" required placeholder="Jaise: Vikas Kumar">
+        </div>
+        <div class="field">
+          <label>Mobile Number</label>
+          <input type="tel" id="mobile" required maxlength="10" pattern="[0-9]{10}" placeholder="10 digit number">
+        </div>
+        <div class="field">
+          <label>Class</label>
+          <select id="studentClass" required>
+            <option value="">-- select karo --</option>
+            <option>9th</option>
+            <option>10th</option>
+            <option>11th</option>
+            <option>12th</option>
+            <option>Dropper</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Face Photo</label>
+          <div class="file-drop">
+            <span id="dropLabel">Tap karke apni face photo upload karo</span>
+            <input type="file" id="photo" accept="image/*" required>
+          </div>
+          <div class="file-preview" id="preview"></div>
+        </div>
+
+        <button type="submit" class="btn block" id="submitBtn">Signup &amp; Generate Access ID</button>
+        <p class="hint center mt">Submit karte hi tumhara ek unique Username/Password banega, aur ek WhatsApp confirmation bhi bhejna hoga.</p>
+      </form>
+
+      <div id="credBox" style="display:none;">
+        <div class="cred-card">
+          <p class="small" style="color:var(--green);margin:0 0 10px;">&gt; ACCESS_GRANTED — ye credentials save kar lo, dobara nahi dikhenge</p>
+          <div class="cred-row"><span class="k">Username</span><span class="v" id="outUser"></span></div>
+          <div class="cred-row"><span class="k">Password</span><span class="v" id="outPass"></span></div>
+        </div>
+        <button class="btn block ghost mt" id="copyBtn">Copy Credentials</button>
+        <a class="btn block mt" id="waBtn" target="_blank">WhatsApp par Confirmation Bhejo →</a>
+        <p class="hint center mt">WhatsApp khulega with pre-filled message — tumhe bas apni photo attach karke Send dabana hai.</p>
+        <a class="btn block ghost mt" href="login.html">Terminal mein Login Karo</a>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="small center mt">Pehle se account hai? <a href="login.html">Login karo</a></p>
+</div>
+
+<footer>APNA STYLE STUDY · 2015—2025 · not public. not promoted. only results.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/signup.js"></script>
+</body>
+</html>

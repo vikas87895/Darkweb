@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APNA STYLE // Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="dot"></div>
+    <div class="brand-title">APNA STYLE<small>PRIVATE · SILENT · SUCCESSFUL</small></div>
+  </div>
+  <nav class="links">
+    <a href="#" data-tab="home" class="tab-link active">home</a>
+    <a href="#" data-tab="courses" class="tab-link">masti batch</a>
+    <a href="#" data-tab="library" class="tab-link">library</a>
+    <a href="docs.html">documentation</a>
+    <a href="#" id="logoutBtn">logout</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <!-- HOME / PROFILE -->
+  <section id="tab-home">
+    <div class="panel">
+      <div class="panel-head"><span class="led"></span> whoami</div>
+      <div class="panel-body flex gap" style="align-items:flex-start;">
+        <div style="text-align:center;">
+          <img id="profilePic" src="" style="width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--green-dim);">
+          <div class="file-drop mt" style="padding:8px;">
+            <span style="font-size:11px;">Change Photo</span>
+            <input type="file" id="profilePhotoInput" accept="image/*">
+          </div>
+        </div>
+        <div style="flex:1;">
+          <h2 id="pName">—</h2>
+          <p class="small">Username: <span id="pUser" style="color:var(--green);"></span></p>
+          <p class="small">Class: <span id="pClass"></span> &nbsp;|&nbsp; Mobile: <span id="pMobile"></span></p>
+          <p class="small">Member since: <span id="pSince"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel mt">
+      <div class="panel-head"><span class="led"></span> welcome_message.log</div>
+      <div class="panel-body">
+        <p class="sub" style="margin:0;"><span class="prefix">&gt;</span> Yahan tumhe milega — Masti Batch course, saari class ki files (photos/videos/PDF/PPT), aur ek community jahan sab like-comment kar sakte hain. Sab kuch <b>view-only</b> hai, download disable hai.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="tab-courses" style="display:none;">
+    <h2>Masti Batch — Courses</h2>
+    <p class="sub">Enroll karne ke liye WhatsApp par contact karo.</p>
+    <div class="grid" id="coursesGrid"></div>
+  </section>
+
+  <!-- LIBRARY -->
+  <section id="tab-library" style="display:none;">
+    <h2>Content Library</h2>
+    <p class="sub">Saari files sirf website ke andar dekhi ja sakti hain — download allowed nahi.</p>
+    <div class="grid" id="libraryGrid"></div>
+  </section>
+
+</div>
+
+<!-- viewer modal -->
+<div class="overlay" id="viewerOverlay">
+  <div class="modal panel" id="viewerModal" style="position:relative;">
+    <div class="modal-close" id="closeViewer">&times;</div>
+    <div class="panel-body" id="viewerBody"></div>
+  </div>
+</div>
+
+<footer>APNA STYLE STUDY · 2015—2025</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

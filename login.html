@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APNA STYLE // Login Terminal</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="dot"></div>
+    <div class="brand-title">APNA STYLE<small>PRIVATE · SILENT · SUCCESSFUL</small></div>
+  </div>
+  <nav class="links">
+    <a href="index.html">signup</a>
+    <a href="login.html" class="active">login</a>
+    <a href="docs.html">documentation</a>
+  </nav>
+</div>
+
+<div class="wrap" style="max-width:440px;">
+  <div class="center" style="margin-bottom:24px;">
+    <span class="badge">SECURE LOGIN</span>
+    <h1 style="margin-top:14px;">Access Terminal</h1>
+    <p class="sub"><span class="prefix">&gt;</span> Signup ke waqt jo Username/Password mila tha wo yahan daalo.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><span class="led"></span> login.sh</div>
+    <div class="panel-body">
+      <div id="msg" class="msg"></div>
+      <form id="loginForm">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="username" required placeholder="AS-XXXXXX" style="text-transform:uppercase;">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="btn block" id="loginBtn">Login</button>
+      </form>
+    </div>
+  </div>
+  <p class="small center mt">Account nahi hai? <a href="index.html">Signup karo</a></p>
+</div>
+
+<footer>APNA STYLE STUDY · 2015—2025</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/util.js"></script>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const msgEl = document.getElementById("msg");
+  const btn = document.getElementById("loginBtn");
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  btn.disabled = true; btn.textContent = "Verifying...";
+  try{
+    await auth.signInWithEmailAndPassword(toEmail(username), password);
+    window.location.href = "dashboard.html";
+  }catch(err){
+    showMsg(msgEl, "Login fail — username ya password galat hai.", "err");
+    btn.disabled = false; btn.textContent = "Login";
+  }
+});
+</script>
+</body>
+</html>
